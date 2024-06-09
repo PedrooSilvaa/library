@@ -23,7 +23,7 @@ public class Library {
     private String published_date;
     @NotBlank
     @Column(name = "description", nullable = false, length = 200)
-    private String description = "Livro sobre:" + getTitle() + " Do autor: " + getAuthor();
+    private String description;
 
     public Library(Integer id, String title, String author, String published_date, String description) {
         this.id = id;

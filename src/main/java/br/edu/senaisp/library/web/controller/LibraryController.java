@@ -40,6 +40,12 @@ public class LibraryController {
         return ResponseEntity.ok(BookMapper.toDto(library));
     }
 
+    @GetMapping("/title/{title}")
+    public ResponseEntity<ResponseBookDto> findBookByTitle(@PathVariable String title){
+        Library library = libraryService.findBookByTitle(title);
+        return ResponseEntity.ok(BookMapper.toDto(library));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<ResponseBookDto> update(@PathVariable int id, @RequestBody UpdateBookDto dto){
         Library library = libraryService.updateBook(id, dto.getTitle(), dto.getConfirmTitle(), dto.getAuthor(), dto.getPublished_date());

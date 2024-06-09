@@ -41,6 +41,13 @@ public class LibraryService {
             );
     }
 
+    @Transactional(readOnly = true)
+    public Library findBookByTitle(String title){
+            return libraryRepository.findByTitle(title).orElseThrow(
+                    () -> new BookNotFoundException(String.format("Book id = %s not found", title))
+            );
+    }
+
     @Transactional
     public Library updateBook(int id, String title, String confirmTitle, String author, String published_date){
         if(!confirmTitle.equals(title)){

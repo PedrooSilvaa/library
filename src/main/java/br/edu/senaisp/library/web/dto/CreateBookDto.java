@@ -13,10 +13,14 @@ public class CreateBookDto {
     @NotBlank
     private String author;
 
-    public CreateBookDto(String title, String published_date, String author) {
+    @NotBlank
+    private String description;
+
+    public CreateBookDto(String title, String published_date, String author, String description) {
         this.title = title;
         this.published_date = published_date;
         this.author = author;
+        this.description = description;
     }
 
     public CreateBookDto() {
@@ -46,12 +50,21 @@ public class CreateBookDto {
         this.author = author;
     }
 
+    public @NotBlank String getDescription() {
+        return description;
+    }
+
+    public void setDescription(@NotBlank String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "CreateBookDto{" +
                 "title='" + title + '\'' +
                 ", published_date='" + published_date + '\'' +
                 ", author='" + author + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
